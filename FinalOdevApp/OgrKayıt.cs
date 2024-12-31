@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalOdevApp
 {
-    public partial class OgrKayýt : Form
+    public partial class OgrKayÃ½t : Form
     {
         private int selectedOgrenciId = -1;
 
-        public OgrKayýt()
+        public OgrKayÃ½t()
         {
             InitializeComponent();
             LoadStudents();
@@ -42,15 +42,15 @@ namespace FinalOdevApp
 
             if (!int.TryParse(txtNumara.Text, out numara))
             {
-                MessageBox.Show("Lütfen geçerli bir numara girin.");
+                MessageBox.Show("LÃ¼tfen geÃ§erli bir numara girin.");
                 return;
             }
 
-            int sinifId = (int)cmbSinif.SelectedValue;  // Seçilen sýnýfýn Id'si
+            int sinifId = (int)cmbSinif.SelectedValue;  // Sinif id seÃ§
 
             if (string.IsNullOrEmpty(ad) || string.IsNullOrEmpty(soyad) || cmbSinif.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen tüm alanlarý doldurun.");
+                MessageBox.Show("LÃ¼tfen tÃ¼m alanlarÃ½ doldurun.");
                 return;
             }
 
@@ -69,7 +69,7 @@ namespace FinalOdevApp
             }
 
             LoadStudents();
-            MessageBox.Show("Öðrenci baþarýyla eklendi!");
+            MessageBox.Show("Ã–Ã°renci baÃ¾arÃ½yla eklendi!");
             Temizle();
         }
 
@@ -86,7 +86,7 @@ namespace FinalOdevApp
             using (var ctx = new StudentDbContex())
             {
                 var ogrenciler = ctx.Ogrenciler
-                    .Include(o => o.Sinif) // sýnýf dahil et
+                    .Include(o => o.Sinif) // sinifi ekle
                     .Select(o => new
                     {
                         o.Id,
@@ -106,7 +106,7 @@ namespace FinalOdevApp
             datagrid.Columns["Ad"].HeaderText = "Ad";
             datagrid.Columns["Soyad"].HeaderText = "Soyad";
             datagrid.Columns["Numara"].HeaderText = "Numara";
-            datagrid.Columns["SinifAdi"].HeaderText = "Sýnýf Adý";
+            datagrid.Columns["SinifAdi"].HeaderText = "SÃ½nÃ½f AdÃ½";
         }
 
         private void datagrid_SelectionChanged(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace FinalOdevApp
         {
             if (selectedOgrenciId == -1)
             {
-                MessageBox.Show("Lütfen bir öðrenci seçin.");
+                MessageBox.Show("LÃ¼tfen bir Ã¶Ã°renci seÃ§in.");
                 return;
             }
 
@@ -145,7 +145,7 @@ namespace FinalOdevApp
 
             if (!int.TryParse(txtNumara.Text, out numara))
             {
-                MessageBox.Show("Lütfen geçerli bir numara girin.");
+                MessageBox.Show("LÃ¼tfen geÃ§erli bir numara girin.");
                 return;
             }
 
@@ -153,7 +153,7 @@ namespace FinalOdevApp
 
             if (string.IsNullOrEmpty(ad) || string.IsNullOrEmpty(soyad) || cmbSinif.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen tüm alanlarý doldurun.");
+                MessageBox.Show("LÃ¼tfen tÃ¼m alanlarÃ½ doldurun.");
                 return;
             }
 
@@ -169,14 +169,14 @@ namespace FinalOdevApp
                     ogrenci.SinifId = sinifId;
 
                     context.SaveChanges();
-                    MessageBox.Show("Öðrenci baþarýyla güncellendi");
+                    MessageBox.Show("Ã–Ã°renci baÃ¾arÃ½yla gÃ¼ncellendi");
 
                     LoadStudents();
                     Temizle();
                 }
                 else
                 {
-                    MessageBox.Show("Seçilen öðrenci bulunamadý");
+                    MessageBox.Show("SeÃ§ilen Ã¶Ã°renci bulunamadÃ½");
                 }
             }
         }
@@ -185,11 +185,11 @@ namespace FinalOdevApp
         {
             if (selectedOgrenciId == -1)
             {
-                MessageBox.Show("Lütfen bir öðrenci seçin");
+                MessageBox.Show("LÃ¼tfen bir Ã¶Ã°renci seÃ§in");
                 return;
             }
 
-            var result = MessageBox.Show("Seçilen öðrenciyi silmek istiyormusun", "Silinsin mi ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show("SeÃ§ilen Ã¶Ã°renciyi silmek istiyormusun", "Silinsin mi ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
@@ -201,14 +201,14 @@ namespace FinalOdevApp
                     {
                         context.Ogrenciler.Remove(ogrenci);
                         context.SaveChanges();
-                        MessageBox.Show("Öðrenci baþarýyla silindi");
+                        MessageBox.Show("Ã–Ã°renci baÃ¾arÃ½yla silindi");
 
                         LoadStudents();
                         Temizle();
                     }
                     else
                     {
-                        MessageBox.Show("Seçilen öðrenci bulunamadý");
+                        MessageBox.Show("SeÃ§ilen Ã¶Ã°renci bulunamadÃ½");
                     }
                 }
             }
@@ -224,14 +224,14 @@ namespace FinalOdevApp
         {
             if (string.IsNullOrWhiteSpace(idgirbox.Text))
             {
-                MessageBox.Show("Lütfen bir Öðrenci Numarasý girin.");
+                MessageBox.Show("LÃ¼tfen bir Ã–Ã°renci NumarasÃ½ girin.");
                 return;
             }
 
             int id;
             if (!int.TryParse(idgirbox.Text, out id))
             {
-                MessageBox.Show("Lütfen geçerli bir  Öðrenci Numarasý girin.");
+                MessageBox.Show("LÃ¼tfen geÃ§erli bir  Ã–Ã°renci NumarasÃ½ girin.");
                 return;
             }
 
@@ -250,7 +250,7 @@ namespace FinalOdevApp
                 }
                 else
                 {
-                    MessageBox.Show("Girilen ID'ye ait öðrenci bulunamadý.");
+                    MessageBox.Show("Girilen ID'ye ait Ã¶Ã°renci bulunamadÃ½.");
                     idgirbox.Text = string.Empty;
                     Temizle();
                 }
@@ -259,12 +259,12 @@ namespace FinalOdevApp
 
         private void ogrenciEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OgrKayýt ogrk = new OgrKayýt();
+            OgrKayÃ½t ogrk = new OgrKayÃ½t();
             ogrk.Show();
 
         }
 
-        private void sýnýflarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sÃ½nÃ½flarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SinifForm sinif = new SinifForm();
             sinif.Show();
@@ -282,7 +282,7 @@ namespace FinalOdevApp
         {
             if (selectedOgrenciId == -1)
             {
-                MessageBox.Show("Lütfen bir öðrenci seçin.");
+                MessageBox.Show("LÃ¼tfen bir Ã¶Ã°renci seÃ§in.");
                 return;
             }
 
