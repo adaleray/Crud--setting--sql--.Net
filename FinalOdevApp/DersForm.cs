@@ -5,7 +5,7 @@ using ErayApp.Models;
 
 namespace FinalOdevApp
 {
-    public class DersForm : Form
+    public partial class DersForm : Form
     {
         private int selectedDersId = -1; 
 
